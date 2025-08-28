@@ -2,7 +2,13 @@
 
 ## Descripción General
 
-Calculator MCP es un servidor de protocolo de comunicación de modelos (MCP) que proporciona capacidades de cálculo matemático avanzado utilizando la herramienta `bc` de Linux. Ofrece aritmética de precisión arbitraria, ideal para cálculos financieros, científicos y situaciones donde la precisión es crítica.
+Calculator MCP es un servidor de protocolo de comunicación de modelos (MCP) que proporciona capacidades de cálculo matemático avanzado utilizando la herramienta `bc` de Linux. Ofrece:
+- Aritmética de precisión arbitraria
+- Funciones matemáticas avanzadas
+- Capacidades de algoritmos
+- Seguridad robusta
+- Es programable. Permite la definición de variables y funciones, cuenta con estructuras de control, por lo que ofrece muchas más posibilidades de simples operaciones aritméticas
+- Es un comando bien conocido, por lo que todos los LLMs dberían poderlo usar
 
 ## Características Principales
 
