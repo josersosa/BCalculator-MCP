@@ -26,6 +26,7 @@ import re
 from typing import Any, Dict, List, Optional, Union
 from dataclasses import dataclass
 from mcp.server import Server
+from mcp.server.lowlevel import NotificationOptions # Importación corregida
 from mcp.server.models import InitializationOptions
 from mcp.server.stdio import stdio_server
 from mcp.types import (
@@ -599,7 +600,7 @@ async def main():
                 server_name="calculator-mcp",
                 server_version="1.0.0",
                 capabilities=server.get_capabilities(
-                    notification_options=None,
+                    notification_options=NotificationOptions(), # Cambiado de None a NotificationOptions()
                     experimental_capabilities=None
                 )
             )

@@ -8,7 +8,7 @@ Calculator MCP es un servidor de protocolo de comunicación de modelos (MCP) que
 - Capacidades de algoritmos
 - Seguridad robusta
 - Es programable. Permite la definición de variables y funciones, cuenta con estructuras de control, por lo que ofrece muchas más posibilidades de simples operaciones aritméticas
-- Es un comando bien conocido, por lo que todos los LLMs dberían poderlo usar
+- Es un comando bien conocido, por lo que todos los LLMs deberían poderlo usar
 
 ## Características Principales
 
