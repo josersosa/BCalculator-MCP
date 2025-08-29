@@ -107,7 +107,7 @@ version: '3.8'
 services:
   calculator-mcp:
     build: .
-    container_name: calculator-mcp-server
+    container_name: balculator-mcp
     ports:
       - "8080:8080"
     environment:
@@ -138,11 +138,11 @@ git clone <repository-url>
 cd calculator-mcp
 
 # Construir la imagen Docker
-docker build -t calculator-mcp:latest .
+docker build -t bcalculator-mcp:latest .
 
 # Ejecutar el contenedor
 docker run -d \
-  --name calculator-mcp-server \
+  --name bcalculator-mcp \
   --port 8080:8080 \
   --restart unless-stopped \
   calculator-mcp:latest
@@ -161,7 +161,7 @@ docker-compose up -d
       "args": [
         "exec",
         "-i",
-        "calculator-mcp-server",
+        "bcalculator-mcp",
         "python",
         "calculator_mcp.py"
       ],
@@ -178,7 +178,7 @@ docker-compose up -d
 **scripts/docker-start.sh**
 ```bash
 #!/bin/bash
-echo "🐳 Iniciando Calculator MCP con Docker..."
+echo "🐳 Iniciando BCalculator MCP con Docker..."
 
 # Verificar si Docker está corriendo
 if ! docker info > /dev/null 2>&1; then
@@ -187,29 +187,29 @@ if ! docker info > /dev/null 2>&1; then
 fi
 
 # Construir imagen si no existe
-if [[ "$(docker images -q calculator-mcp:latest 2> /dev/null)" == "" ]]; then
+if [[ "$(docker images -q bcalculator-mcp:latest 2> /dev/null)" == "" ]]; then
     echo "🔨 Construyendo imagen Docker..."
-    docker build -t calculator-mcp:latest .
+    docker build -t bcalculator-mcp:latest .
 fi
 
 # Detener contenedor existente si está corriendo
-if [ "$(docker ps -q -f name=calculator-mcp-server)" ]; then
+if [ "$(docker ps -q -f name=calculator-mcp)" ]; then
     echo "🛑 Deteniendo contenedor existente..."
-    docker stop calculator-mcp-server
-    docker rm calculator-mcp-server
+    docker stop bcalculator-mcp
+    docker rm bcalculator-mcp
 fi
 
 # Iniciar nuevo contenedor
-echo "🚀 Iniciando Calculator MCP Server..."
+echo "🚀 Iniciando BCalculator MCP Server..."
 docker run -d \
-  --name calculator-mcp-server \
+  --name bcalculator-mcp \
   --port 8080:8080 \
   --restart unless-stopped \
-  calculator-mcp:latest
+  bcalculator-mcp:latest
 
 # Verificar que el contenedor está corriendo
 if [ "$(docker ps -q -f name=calculator-mcp-server)" ]; then
-    echo "✅ Calculator MCP Server está corriendo en el puerto 8080"
+    echo "✅ BCalculator MCP Server está corriendo en el puerto 8080"
     echo "📋 Logs: docker logs calculator-mcp-server"
     echo "🛑 Detener: docker stop calculator-mcp-server"
 else
@@ -221,12 +221,12 @@ fi
 **scripts/docker-stop.sh**
 ```bash
 #!/bin/bash
-echo "🛑 Deteniendo Calculator MCP Server..."
+echo "🛑 Deteniendo BCalculator MCP Server..."
 
-if [ "$(docker ps -q -f name=calculator-mcp-server)" ]; then
-    docker stop calculator-mcp-server
-    docker rm calculator-mcp-server
-    echo "✅ Calculator MCP Server detenido"
+if [ "$(docker ps -q -f name=bcalculator-mcp)" ]; then
+    docker stop bcalculator-mcp
+    docker rm bcalculator-mcp
+    echo "✅ BCalculator MCP Server detenido"
 else
     echo "ℹ️  El servidor no está corriendo"
 fi

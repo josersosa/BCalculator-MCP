@@ -1,0 +1,8 @@
+services:
+  bcalculator-mcp:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: bcalculator-mcp
+    ports:
+      - "8080:8080"

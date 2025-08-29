@@ -69,13 +69,12 @@ class BCCalculator:
         """
         # Remover comandos peligrosos
         dangerous_patterns = [
-            r'system\s*\(',
-            r'quit\s*\(',
-            r'halt\s*\(',
-            r'read\s*\(',
-            r'print\s*\(',
-            r'\..*',  # Comandos que empiezan con punto
-            r'!.*',   # Comandos shell
+            r'system\s*$',
+            r'quit\s*$',
+            r'hal\s*$',
+            r'read\s*$',
+            r'print\s*$',
+            r'!.*'   # Comandos shell
         ]
         
         for pattern in dangerous_patterns:
@@ -211,7 +210,9 @@ class BCCalculator:
 calculator = BCCalculator()
 
 # Crear servidor MCP
-server = Server("calculator-mcp")
+# Línea 24 - Inicialización del servidor
+server = Server(
+    "calculator-mcp")
 
 @server.list_resources()
 async def handle_list_resources() -> List[Resource]:
@@ -600,7 +601,7 @@ async def main():
                 server_name="calculator-mcp",
                 server_version="1.0.0",
                 capabilities=server.get_capabilities(
-                    notification_options=NotificationOptions(), # Cambiado de None a NotificationOptions()
+                    notification_options=NotificationOptions(), # Already correctly set
                     experimental_capabilities=None
                 )
             )
