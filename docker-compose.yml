@@ -113,3 +113,13 @@ networks:
     ipam:
       config:
         - subnet: 172.20.0.0/16
+
+# Líneas 3-8
+services:
+  bcalculator-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bcalculator-mcp
+    ports:
+      - "8080:8080"

@@ -210,9 +210,13 @@ class BCCalculator:
 calculator = BCCalculator()
 
 # Crear servidor MCP
-# Línea 24 - Inicialización del servidor
-server = Server(
-    "calculator-mcp")
+# Línea 24
+server = Server("bcalculator-mcp")
+
+# Líneas 45-52
+Resource(uri="bcalculator://functions", name="Funciones Matemáticas Disponibles"),
+Resource(uri="bcalculator://examples", name="Ejemplos de Uso"),
+Resource(uri="bcalculator://precision-guide", name="Guía de Precisión")
 
 @server.list_resources()
 async def handle_list_resources() -> List[Resource]:
